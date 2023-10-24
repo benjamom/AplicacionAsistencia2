@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bienvenido {{name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/home">Volver</ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="ion-text-center ion-margin-top">
+  <ion-button routerLink="/home" color="danger" shape="round" >Desconectar</ion-button>
+  <ion-button color="success" shape="round" routerLink="/asistencia" >Marcar asistencia</ion-button>
+  </div>
+
+
+</ion-content>
