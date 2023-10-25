@@ -10,9 +10,16 @@
 <ion-content [fullscreen]="true">
 
   <div class="ion-text-center ion-margin-top">
-  <ion-button routerLink="/home" color="danger" shape="round" >Desconectar</ion-button>
-  <ion-button color="success" shape="round" routerLink="/asistencia" >Marcar asistencia</ion-button>
+    <ion-button routerLink="/home" color="danger" shape="round">Desconectar</ion-button>
+    <ion-button color="warning" shape="round" (click)="takePhoto()">Selfie</ion-button>
+    <ion-button color="success" shape="round" routerLink="/asistencia">Marcar asistencia</ion-button>
+
   </div>
+
+  <ion-card *ngFor="let i of imagenes">
+    <ion-img [src]="i.src"></ion-img>
+  </ion-card>
+
 
 
 </ion-content>
