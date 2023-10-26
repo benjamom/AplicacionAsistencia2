@@ -34,8 +34,18 @@
         <div slot="label">Apellido <ion-text color="success">(Perez)</ion-text></div>
       </ion-input>
     </ion-col>
+    <ion-col>
+      <ion-select (ionChange)="cargarComuna()" [(ngModel)]="regionSel" label="Region" placeholder="Seleccione">
+        <ion-select-option *ngFor="let i of regiones" [value]="i.id">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col>
+      <ion-select [disabled]="selComuna" [(ngModel)]="regionSel" label="Comuna" placeholder="Seleccione">
+        <ion-select-option *ngFor="let i of comunas" [value]="i.id">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-col>
     <ion-row>
-      <ion-button (click)="inicio()"  routerLink="/home" color="warning" size="medium" shape="round">Guardar</ion-button>
+      <ion-button (click)="validacionRegistro()"  routerLink="/home" color="warning" size="medium" shape="round">Guardar</ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>
