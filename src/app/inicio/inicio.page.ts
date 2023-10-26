@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import {Camera, CameraResultType,CameraSource} from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { CommonModule } from '@angular/common';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-inicio',
@@ -16,11 +17,21 @@ export class InicioPage implements OnInit {
   lastname: string = "";
   carrera: string = "";
   isSupported = false;
+  latitud: number =0;
+  longitud: number = 0;
+  a:any;
+  isModalOpen = false;
+
+  
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
 
   constructor(private navCtrl: NavController, private router: Router, private alertController: AlertController) { }
 
   imagenes:any[]=[];
-  imagen: any;
+
 
   ngOnInit() {
 
@@ -54,8 +65,13 @@ export class InicioPage implements OnInit {
 
     }
   }
+    
+  async geoLocalizacion(){
 
-
+    const coordenadas = await Geolocation.getCurrentPosition();
+    this.latitud = coordenadas.coords.latitude;
+    this.longitud = coordenadas.coords.longitude;
+  }
   ngOnDestroy(): void {
   }
 

@@ -1,5 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-avatar>
+      <img id="persona" alt="Silhouette of a person's head"
+        src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
     <ion-title>Bienvenido {{name}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button routerLink="/home">Volver</ion-back-button>
@@ -11,10 +15,36 @@
 
   <div class="ion-text-center ion-margin-top">
     <ion-button routerLink="/home" color="danger" shape="round">Desconectar</ion-button>
-    <ion-button color="warning" shape="round" (click)="takePhoto()">Selfie</ion-button>
-    <ion-button color="success" shape="round" routerLink="/asistencia">Marcar asistencia</ion-button>
-
   </div>
+  <div class="ion-text-center ion-margin-top">
+    <ion-button color="warning" shape="round" (click)="takePhoto()">Selfie</ion-button>
+  </div>
+  <div class="ion-text-center ion-margin-top">
+    <ion-button color="success" shape="round" routerLink="/asistencia">Marcar asistencia</ion-button>
+  </div>
+  <div class="ion-text-center ion-margin-top">
+    <ion-button shape="round" (click)="setOpen(true)">Geolocalizacion</ion-button>
+  </div>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Coordenadas </ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div>
+          <ion-item>Latitud: {{latitud}}</ion-item>
+          <ion-item>Longitud: {{longitud}}</ion-item>
+        </div>
+        <ion-button color="success" shape="round" (click)="geoLocalizacion()">Obtener mis coordenadas</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 
   <ion-card *ngFor="let i of imagenes">
     <ion-img [src]="i.src"></ion-img>
