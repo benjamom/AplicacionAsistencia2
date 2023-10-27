@@ -8,6 +8,7 @@ import { RegistroPageRoutingModule } from './registro-routing.module';
 
 import { RegistroPage } from './registro.page';
 import { HttpClientModule } from '@angular/common/http';
+import { StorageService } from '../services/storage.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [RegistroPage]
+  declarations: [RegistroPage],
+  providers: [StorageService]
 })
 export class RegistroPageModule {}

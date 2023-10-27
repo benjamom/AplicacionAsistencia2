@@ -6,6 +6,7 @@ import {Camera, CameraResultType,CameraSource} from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { CommonModule } from '@angular/common';
 import { Geolocation } from '@capacitor/geolocation';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-inicio',
@@ -13,13 +14,12 @@ import { Geolocation } from '@capacitor/geolocation';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  name: string = "";
-  lastname: string = "";
-  carrera: string = "";
+  name:string = "";
+  lastname:string = "";
+  carrera:string = "";
   isSupported = false;
   latitud: number =0;
   longitud: number = 0;
-  a:any;
   isModalOpen = false;
 
   
@@ -28,7 +28,10 @@ export class InicioPage implements OnInit {
   }
 
 
-  constructor(private navCtrl: NavController, private router: Router, private alertController: AlertController) { }
+  constructor(private navCtrl: NavController,
+    private router: Router, 
+    private alertController: AlertController,
+    private storageService:StorageService) { }
 
   imagenes:any[]=[];
 

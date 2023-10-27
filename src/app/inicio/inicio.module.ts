@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InicioPageRoutingModule } from './inicio-routing.module';
 
 import { InicioPage } from './inicio.page';
+import { StorageService } from '../services/storage.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { InicioPage } from './inicio.page';
     IonicModule,
     InicioPageRoutingModule
   ],
-  declarations: [InicioPage]
+  declarations: [InicioPage],
+  providers: [StorageService]
 })
 export class InicioPageModule {}
