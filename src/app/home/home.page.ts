@@ -43,7 +43,6 @@ export class HomePage {
       message: 'Los datos ingresados son incorrectos.',
       buttons: ['Aceptar']
     });
-
     this.clearFields();
     await alert.present();
   }
@@ -67,13 +66,12 @@ export class HomePage {
   }
 
   confirm() {
-    if (this.nombre == localStorage.getItem('usuario')) {
+    if (this.nombre == JSON.stringify(this.storageService.getUsuario())) {
       this.modal.dismiss(this.nuevaClave, 'confirm');
     } else {
       console.log('Nombre de usuario o contraseña incorrectos');
       this.mostrarAlertaClaveInvalida();
     }
-
   }
 
   onWillDismiss(event: Event) {
