@@ -23,6 +23,8 @@ export class InicioPage implements OnInit {
   isModalOpen = false;
 
   
+
+  
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
@@ -36,11 +38,13 @@ export class InicioPage implements OnInit {
   imagenes:any[]=[];
 
 
+
   ngOnInit() {
 
     this.name = JSON.stringify(localStorage.getItem('name'));
     this.lastname = JSON.stringify(localStorage.getItem('lastname'));
     this.carrera = JSON.stringify(localStorage.getItem('carrera'));
+    
     defineCustomElements(window);
     
   }

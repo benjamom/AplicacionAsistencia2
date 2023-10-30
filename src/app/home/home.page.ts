@@ -1,11 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { StorageService } from '../services/storage.service';
 import { SharedService } from '../services/shared.service';
 import { HelperService } from '../services/helper.service';
+import { AlertController, IonModal } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +38,7 @@ export class HomePage {
 
   async mostrarAlertaClaveInvalida() {
     const alert = await this.alertController.create({
-      header: 'Erro en el ingreso de datos',
+      header: 'Error en el ingreso de datos',
       message: 'Los datos ingresados son incorrectos.',
       buttons: ['Aceptar']
     });
@@ -47,20 +46,7 @@ export class HomePage {
     await alert.present();
   }
 
-  /* validarUsuario() {
-    const datosUsuario = localStorage.getItem('usuario');
-    const passUsuario = localStorage.getItem('password');
-    if (datosUsuario === this.nombre && passUsuario === this.clave) {
-      // Los datos coinciden, el usuario está autenticado
-      console.log('Inicio de sesión exitoso');
-      this.router.navigate(['/inicio'])
 
-      // Puedes realizar redirecciones u otras acciones aquí
-    } else {
-      console.log('Nombre de usuario o contraseña incorrectos');
-      this.mostrarAlertaClaveInvalida();
-    }
-  } */
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }
@@ -88,22 +74,18 @@ export class HomePage {
 
     const usuariosAlmacenados = await this.storageService.getUsuario();
 
-    // Verificar credenciales
+
     const usuarioEncontrado = usuariosAlmacenados.find((user) => user.usuario === usuario && user.contrasena === contrasena);
 
     if (usuarioEncontrado) {
-      const { usuario, carrera} = usuarioEncontrado;
+      const { usuario, carrera } = usuarioEncontrado;
       this.sharedService.setUsuario(usuarioEncontrado.usuario);
       this.sharedService.setCarrera(usuarioEncontrado.carrera);
-
-      console.log("Nombre: " + usuario);
-      console.log("Carrera: " + carrera);
       
-      // Autenticación exitosa
-      // Redirige al usuario a la página "ingresado"
+
       this.router.navigate(['/inicio']);
     } else {
-      // Credenciales incorrectas
+
       this.helper.showAlert('Credenciales incorrectas','Error');
     }
   }
